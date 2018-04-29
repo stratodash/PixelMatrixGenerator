@@ -19,7 +19,7 @@ build/
 #!packages/*/build/
 
 # We can ignore everything in packages folder as Azure restores all packages if missing. No need
-# to version any of them. [Manfred, 29jan2014]
+# to version any of them.
 packages/
 
 *_i.c
@@ -153,47 +153,3 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
-
-
-# ========================
-# Solution specific rules
-# ========================
-
-# The following file is generated during build. We don't want to version it [Manfred, 01Apr2014]
-/VersionNumberGenerator/AssemblyInfoShared.cs
-
-# The following are files that are intermediate files when a TypeScript file is compiled.
-# We don't want to version these. [Manfred, 28oct2014]
-**/Scripts/ts/*.js.map
-**/Scripts/ts/*.js
-/Web/local.config
-
-# We should not longer require the *.generated.cs files from RazorGenerator as we are
-# using RazorGenerator.MsBuild [Manfred, 04mar2017]
-*.generated.cs
-
-/log4net.txt
-/TestResults/HoicPro.TE.Tests.mdf
-/TestResults/HoicPro.TE.Tests_log.ldf
-DbRestore/bugzhtdkiq-hoicpro-prod-20161122T120613Z.bacpac
-/TestResult.xml
-/testfile.pdf
-/.vs
-/tools/AssemblyInfoShared.cs
-/temp/**
-/HoicProTest4NUnit.sln
-/temp2/**
-/Web/node_modules
-
-
-
-
-
-# =======================
-# T4MVC specific rules
-# =======================
-/Web/**/*.generated.cs
-
-
-/Web/node_modules
-/System/PdfEngine/appsettings.Production.json
