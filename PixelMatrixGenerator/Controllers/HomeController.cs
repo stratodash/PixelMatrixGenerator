@@ -12,21 +12,45 @@ namespace PixelMatrixGenerator.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            IndexModel indexModel = new IndexModel
+            {
+                checkBoxes = new bool[100]
+            };
+            return View(indexModel);
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public IActionResult Index(IndexModel indexModel)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            indexModel.pixelString = ConvertToStringArray(indexModel.checkBoxes);
+            return View(indexModel);
         }
 
-        public IActionResult Contact()
+        public IActionResult Result(bool[] checkBoxList)
         {
-            ViewData["Message"] = "Your contact page.";
+            ResultModel model = new ResultModel
+            {
+                pixelString = ConvertToStringArray(checkBoxList)
+            };
+            return View(model);
+        }
 
-            return View();
+        public string ConvertToStringArray(bool[] checkBoxList)
+        {
+            var pixelString = "";
+            foreach (bool checkbox in checkBoxList)
+            {
+                if (checkbox)
+                {
+                    pixelString += "1,";
+                }
+                else
+                {
+                    pixelString += "0,";
+                }              
+            }
+
+            return pixelString.TrimEnd(',');
         }
 
         public IActionResult Error()
